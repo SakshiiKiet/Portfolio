@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Sakshi Maan - Full-Stack Developer & AI Enthusiast. Building intelligent solutions at the intersection of AI, full-stack development, and civic technology." />
+  <meta name="keywords" content="Sakshi Maan, Full Stack Developer, AI Developer, React Developer, Node.js Developer, KIET, Portfolio" />
+  <meta name="author" content="Sakshi Maan" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sakshimaan.com/" />
+  <meta property="og:title" content="Sakshi Maan - Full-Stack Developer & AI Enthusiast" />
+  <meta property="og:description" content="Building intelligent, impactful solutions at the intersection of AI, full-stack development, and civic technology." />
+  <meta property="og:image" content="https://sakshimaan.com/og-image.jpg" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://sakshimaan.com/" />
+  <meta property="twitter:title" content="Sakshi Maan - Full-Stack Developer & AI Enthusiast" />
+  <meta property="twitter:description" content="Building intelligent, impactful solutions at the intersection of AI, full-stack development, and civic technology." />
+  <meta property="twitter:image" content="https://sakshimaan.com/og-image.jpg" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <title>Sakshi Maan - Full-Stack Developer & AI Enthusiast</title>
+  
+  <style>
+    /* Loading animation */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out;
+    }
+    
+    #loading.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(139, 92, 246, 0.2);
+      border-top-color: #8b5cf6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      margin-top: 20px;
+      color: #a78bfa;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+    
+    /* Prevent FOUC */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #0f172a;
+      overflow-x: hidden;
+    }
+    
+    code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="loader"></div>
+    <div class="loading-text">LOADING</div>
+  </div>
+  
+  <div id="root"></div>
+  
+  <script>
+    // Hide loading screen when page is loaded
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading').classList.add('hide');
+      }, 500);
+    });
+  </script>
+</body>
+</html>
