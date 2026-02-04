@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Github, Linkedin, Mail, Code, Award, Briefcase, GraduationCap, ChevronDown, Terminal, Sparkles, Zap, Trophy, Star, ArrowRight, Send, Eye, BookOpen, TrendingUp, Download, Calendar, Clock, Search, X, Share2, Heart, CheckCircle } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Award, Briefcase, GraduationCap, ChevronDown, Terminal, Sparkles, Zap, Trophy, Star, ArrowRight, Send, Eye, BookOpen, TrendingUp, Download, Calendar, Clock, Search, X, CheckCircle } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
