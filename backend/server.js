@@ -126,17 +126,32 @@ const Newsletter = mongoose.model('Newsletter', newsletterSchema);
 const Testimonial = mongoose.model('Testimonial', testimonialSchema);
 const Comment = mongoose.model('Comment', commentSchema);
 
-// Email Configuration (optional)
+// Email Configuration
 let transporter = null;
 if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-  transporter = nodemailer.createTransport({
-    service: process.env.EMAIL_SERVICE || 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
-  console.log('✅ Email service configured');
+  // SendGrid configuration
+  if (process.env.EMAIL_SERVICE && process.env.EMAIL_SERVICE.toLowerCase() === 'sendgrid') {
+    transporter = nodemailer.createTransport({
+      host: 'smtp.sendgrid.net',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+    console.log('✅ SendGrid email service configured');
+  } else {
+    // Gmail or other service
+    transporter = nodemailer.createTransport({
+      service: process.env.EMAIL_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+    console.log('✅ Email service configured');
+  }
 } else {
   console.log('⚠️  Email service not configured (EMAIL_USER/EMAIL_PASS missing)');
 }
@@ -181,8 +196,9 @@ app.post('/api/contact', async (req, res) => {
     // Send email notification (if configured)
     if (transporter && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
       try {
+        const fromEmail = process.env.EMAIL_FROM || process.env.EMAIL_USER;
         await transporter.sendMail({
-          from: process.env.EMAIL_USER,
+          from: fromEmail,
           to: process.env.EMAIL_USER,
           subject: `Portfolio Contact: ${subject}`,
           html: `
@@ -262,7 +278,7 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
       try {
         // Email to subscriber
         await transporter.sendMail({
-          from: process.env.EMAIL_USER,
+          from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
           to: email,
           subject: '🎉 Welcome to Sakshi Maan\'s Newsletter!',
           html: `
@@ -317,8 +333,8 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
         
         // Notification email to you
         await transporter.sendMail({
-          from: process.env.EMAIL_USER,
-          to: process.env.EMAIL_USER,
+          from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+          to: process.env.EMAIL_FROM || process.env.EMAIL_USER,
           subject: '🔔 New Newsletter Subscription!',
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
