@@ -251,52 +251,131 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
           to: email,
           subject: '🎉 Welcome to Sakshi Maan\'s Newsletter!',
           html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb;">
-              <div style="background: linear-gradient(135deg, #ff7c5c 0%, #14b8a6 100%); padding: 40px 20px; border-radius: 12px 12px 0 0; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 28px;">Welcome! 🎉</h1>
-              </div>
-              
-              <div style="background: white; padding: 40px; border-radius: 0 0 12px 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <h2 style="color: #1e293b; margin-top: 0;">Thanks for subscribing!</h2>
-                
-                <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                  I'm thrilled to have you as part of my community! You'll now receive:
-                </p>
-                
-                <ul style="color: #475569; font-size: 16px; line-height: 1.8; padding-left: 20px;">
-                  <li>✨ <strong>Latest articles</strong> on web development, AI, and tech insights</li>
-                  <li>🚀 <strong>New project launches</strong> and behind-the-scenes updates</li>
-                  <li>💡 <strong>Tips & tricks</strong> to level up your coding skills</li>
-                  <li>📬 <strong>Exclusive content</strong> just for subscribers</li>
-                </ul>
-                
-                <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                  I promise to keep your inbox clutter-free and only send valuable content. No spam, ever!
-                </p>
-                
-                <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin: 30px 0;">
-                  <p style="color: #475569; font-size: 14px; margin: 0; text-align: center;">
-                    📧 Subscribed with: <strong>${email}</strong>
-                  </p>
-                </div>
-                
-                <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                  Stay tuned for great content!
-                </p>
-                
-                <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e2e8f0;">
-                  <p style="color: #475569; margin: 0;">Best regards,</p>
-                  <p style="color: #14b8a6; font-weight: bold; font-size: 18px; margin: 5px 0;">Sakshi Maan</p>
-                  <p style="color: #94a3b8; font-size: 14px; margin: 0;">Full Stack Developer</p>
-                </div>
-                
-                <div style="margin-top: 30px; text-align: center; padding-top: 20px; border-top: 1px solid #e2e8f0;">
-                  <p style="color: #94a3b8; font-size: 12px; margin: 0;">
-                    You received this email because you subscribed to Sakshi Maan's newsletter.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </head>
+            <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f3f4f6;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f3f4f6; padding: 40px 20px;">
+                <tr>
+                  <td align="center">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                      
+                      <!-- Header with Gradient -->
+                      <tr>
+                        <td style="background: linear-gradient(135deg, #ff6b4a 0%, #ff7c5c 25%, #14b8a6 75%, #0d9488 100%); padding: 50px 40px; text-align: center;">
+                          <div style="font-size: 60px; margin-bottom: 10px;">🎉</div>
+                          <h1 style="color: #ffffff; margin: 0; font-size: 36px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            Welcome Aboard!
+                          </h1>
+                          <p style="color: rgba(255,255,255,0.95); font-size: 18px; margin: 15px 0 0 0; font-weight: 500;">
+                            Thanks for joining my community
+                          </p>
+                        </td>
+                      </tr>
+                      
+                      <!-- Main Content -->
+                      <tr>
+                        <td style="padding: 50px 40px;">
+                          <h2 style="color: #1e293b; margin: 0 0 20px 0; font-size: 24px; font-weight: 600;">
+                            Hey there! 👋
+                          </h2>
+                          
+                          <p style="color: #475569; font-size: 17px; line-height: 1.7; margin: 0 0 25px 0;">
+                            I'm absolutely <strong>thrilled</strong> to have you here! You've just joined an amazing community of developers, creators, and tech enthusiasts.
+                          </p>
+                          
+                          <!-- What You'll Get Box -->
+                          <div style="background: linear-gradient(135deg, #fef3f2 0%, #ecfdf5 100%); border-left: 4px solid #ff7c5c; padding: 30px; border-radius: 12px; margin: 30px 0;">
+                            <h3 style="color: #1e293b; margin: 0 0 20px 0; font-size: 20px; font-weight: 600;">
+                              📬 What You'll Receive:
+                            </h3>
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                                <td style="padding: 12px 0;">
+                                  <span style="font-size: 24px; margin-right: 12px;">✨</span>
+                                  <span style="color: #334155; font-size: 16px; line-height: 1.6;"><strong>Latest Articles</strong> on web development, AI, and tech insights</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="padding: 12px 0;">
+                                  <span style="font-size: 24px; margin-right: 12px;">🚀</span>
+                                  <span style="color: #334155; font-size: 16px; line-height: 1.6;"><strong>Project Launches</strong> with behind-the-scenes updates</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="padding: 12px 0;">
+                                  <span style="font-size: 24px; margin-right: 12px;">💡</span>
+                                  <span style="color: #334155; font-size: 16px; line-height: 1.6;"><strong>Tips & Tricks</strong> to level up your coding skills</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="padding: 12px 0;">
+                                  <span style="font-size: 24px; margin-right: 12px;">🎁</span>
+                                  <span style="color: #334155; font-size: 16px; line-height: 1.6;"><strong>Exclusive Content</strong> available only for subscribers</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                          
+                          <!-- Promise Box -->
+                          <div style="background-color: #f8fafc; border: 2px solid #e2e8f0; padding: 25px; border-radius: 12px; margin: 30px 0; text-align: center;">
+                            <p style="color: #475569; font-size: 16px; line-height: 1.6; margin: 0;">
+                              <strong>My Promise:</strong> No spam, ever! Only valuable content that helps you grow as a developer. Your inbox stays clean. 🧹
+                            </p>
+                          </div>
+                          
+                          <!-- Subscription Confirmation -->
+                          <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 25px; border-radius: 12px; margin: 30px 0; text-align: center; border: 1px solid #93c5fd;">
+                            <p style="color: #1e40af; font-size: 15px; margin: 0 0 8px 0; font-weight: 500;">
+                              ✓ Subscription Confirmed
+                            </p>
+                            <p style="color: #3b82f6; font-size: 17px; margin: 0; font-weight: 600;">
+                              ${email}
+                            </p>
+                          </div>
+                          
+                          <p style="color: #475569; font-size: 17px; line-height: 1.7; margin: 25px 0 0 0;">
+                            Stay tuned for amazing content! 🎯
+                          </p>
+                        </td>
+                      </tr>
+                      
+                      <!-- Signature -->
+                      <tr>
+                        <td style="padding: 0 40px 40px 40px;">
+                          <div style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #14b8a6;">
+                            <p style="color: #0f766e; margin: 0 0 8px 0; font-size: 15px; font-weight: 500;">
+                              Best regards,
+                            </p>
+                            <p style="color: #14b8a6; font-weight: 700; font-size: 24px; margin: 0 0 5px 0;">
+                              Sakshi Maan
+                            </p>
+                            <p style="color: #5eead4; font-size: 16px; margin: 0; font-weight: 500;">
+                              Full Stack Developer 💻
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                      
+                      <!-- Footer -->
+                      <tr>
+                        <td style="background-color: #f8fafc; padding: 30px 40px; text-align: center; border-top: 1px solid #e2e8f0;">
+                          <p style="color: #94a3b8; font-size: 13px; line-height: 1.6; margin: 0;">
+                            You received this email because you subscribed to Sakshi Maan's newsletter at<br>
+                            <a href="https://sakshi-maan-portfolio.netlify.app" style="color: #14b8a6; text-decoration: none; font-weight: 500;">sakshi-maan-portfolio.netlify.app</a>
+                          </p>
+                        </td>
+                      </tr>
+                      
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </body>
+            </html>
           `
         });
         
