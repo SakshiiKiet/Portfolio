@@ -10,18 +10,27 @@ const app = express();
 // CORS configuration for production
 const allowedOrigins = [
   'http://localhost:3000',
+  'https://sakshi-maan-portfolio.netlify.app',
   process.env.FRONTEND_URL
 ].filter(Boolean);
+
+console.log('🔒 Allowed CORS origins:', allowedOrigins);
 
 app.use(cors({
   origin: function(origin, callback) {
     // Allow requests with no origin (mobile apps, Postman, etc.)
     if (!origin) return callback(null, true);
     
-    if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.some(allowed => origin.includes(allowed))) {
+    // Check if origin matches any allowed origin
+    const isAllowed = allowedOrigins.some(allowed => {
+      return origin === allowed || origin.startsWith(allowed);
+    });
+    
+    if (isAllowed) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.log('❌ CORS blocked origin:', origin);
+      callback(null, true); // Allow anyway for now - change to error in production
     }
   },
   credentials: true
@@ -167,6 +176,7 @@ app.post('/api/contact', async (req, res) => {
     });
     
     await contact.save();
+    console.log('✅ Contact form saved to DB:', email);
     
     // Send email notification (if configured)
     if (transporter && process.env.EMAIL_USER && process.env.EMAIL_PASS) {
@@ -194,7 +204,12 @@ app.post('/api/contact', async (req, res) => {
       message: 'Message sent successfully! I\'ll get back to you soon.' 
     });
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('❌ Contact form error:', error);
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    });
     res.status(500).json({ 
       success: false, 
       message: 'Failed to send message. Please try again later.' 
