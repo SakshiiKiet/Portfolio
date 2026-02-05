@@ -4,8 +4,7 @@ A modern, interactive portfolio website built with React and Node.js, featuring 
 
 ## 🌐 Live Demo
 
-🔗 **Website**: [your-portfolio-url.vercel.app](https://your-portfolio-url.vercel.app) *(Update this after deployment)*
-
+🔗 **Website**: https://sakshi-maan-portfolio.netlify.app
 ## ✨ Features
 
 - 🎨 **Dynamic Theme Switcher** - Toggle between warm (coral/amber/teal) and cool (blue/purple/cyan) color schemes
